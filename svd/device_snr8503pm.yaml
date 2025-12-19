@@ -1,0 +1,516 @@
+_svd: skeleton.svd
+
+_add:
+  MISC:
+    description: Miscellaneous System Control
+    baseAddress: 0x40000000
+    registers:
+      SYS_AFE_ADC:
+        addressOffset: 0x00
+      SYS_AFE_INFO:
+        addressOffset: 0x04
+        access: read-only
+      SYS_AFE_DBG:
+        addressOffset: 0x08
+      SYS_OPA_SEL:
+        addressOffset: 0x0C
+      SYS_AFE_REG0:
+        addressOffset: 0x10
+      SYS_AFE_REG1:
+        addressOffset: 0x14
+      SYS_AFE_REG2:
+        addressOffset: 0x18
+      SYS_AFE_REG3:
+        addressOffset: 0x1C
+      SYS_AFE_REG4:
+        addressOffset: 0x20
+      SYS_AFE_REG5:
+        addressOffset: 0x24
+      SYS_AFE_REG6:
+        addressOffset: 0x28
+      SYS_AFE_DAC:
+        addressOffset: 0x2C
+      SYS_CLK_CFG:
+        addressOffset: 0x80
+      SYS_IO_CFG:
+        addressOffset: 0x84
+      SYS_DBG_CFG:
+        addressOffset: 0x88
+      SYS_CLK_DIV0:
+        description: SPI clock div
+        addressOffset: 0x90
+      SYS_CLK_DIV1:
+        description: I2C clock div
+        addressOffset: 0x94
+      SYS_CLK_DIV2:
+        description: UART0/1 clock div
+        addressOffset: 0x98
+      SYS_CLK_FEN:
+        description: peripheral clock enable
+        addressOffset: 0x9C
+      SYS_TRIM:
+        addressOffset: 0xA0
+      SYS_SFT_RST:
+        addressOffset: 0xA4
+      SYS_WR_PROTECT:
+        description: Write Protect (Aliases SYS_PROTECT, SYS_PROT)
+        addressOffset: 0xA8
+      SYS_MBIST:
+        addressOffset: 0xC0
+      SYS_FLSE:
+        addressOffset: 0xD0
+      SYS_FLSP:
+        addressOffset: 0xD4
+      SYS_FLST:
+        addressOffset: 0xD8
+      SYS_TEST:
+        addressOffset: 0xFC
+
+  FLASH_CTRL:
+    description: Flash Control
+    baseAddress: 0x00010000
+    registers:
+      FLASH_CFG:
+        addressOffset: 0x00
+      FLASH_ADDR:
+        addressOffset: 0x04
+      FLASH_WDATA:
+        addressOffset: 0x08
+      FLASH_RDATA:
+        addressOffset: 0x0C
+      FLASH_ERASE:
+        addressOffset: 0x10
+      FLASH_PROTECT:
+        addressOffset: 0x14
+      FLASH_READY:
+        addressOffset: 0x18
+
+  SPI:
+    description: Serial Peripheral Interface
+    baseAddress: 0x40010000
+    interrupts:
+      SPI_IRQn:
+        description: SPI Interrupt
+        value: 5
+    registers:
+      SPI_CFG:
+        addressOffset: 0x00
+      SPI_IE:
+        addressOffset: 0x04
+      SPI_DIV:
+        addressOffset: 0x08
+      SPI_TX_DATA:
+        addressOffset: 0x0C
+      SPI_RX_DATA:
+        addressOffset: 0x10
+      SPI_SIZE:
+        addressOffset: 0x14
+
+  I2C:
+    description: I2C Interface
+    baseAddress: 0x40010100
+    interrupts:
+      I2C_IRQn:
+        description: I2C Interrupt
+        value: 4
+    registers:
+      I2C_ADDR:
+        addressOffset: 0x00
+      I2C_CFG:
+        addressOffset: 0x04
+      I2C_SCR:
+        addressOffset: 0x08
+      I2C_DATA:
+        addressOffset: 0x0C
+      I2C_MSCR:
+        addressOffset: 0x10
+      I2C_BCR:
+        addressOffset: 0x14
+      I2C_BSIZE:
+        addressOffset: 0x18
+
+  CMP:
+    description: Comparator
+    baseAddress: 0x40010200
+    interrupts:
+      CMP_IRQn:
+        description: Comparator Interrupt
+        value: 9
+    registers:
+      CMP_IE:
+        addressOffset: 0x00
+      CMP_IF:
+        addressOffset: 0x04
+      CMP_TCLK:
+        addressOffset: 0x08
+      CMP_CFG:
+        addressOffset: 0x0C
+      CMP_BLCWIN:
+        addressOffset: 0x10
+      CMP_DATA:
+        addressOffset: 0x14
+
+  HALL:
+    description: Hall Sensor Interface
+    baseAddress: 0x40010300
+    interrupts:
+      HALL_IRQn:
+        description: Hall Sensor Interrupt
+        value: 7
+    registers:
+      HALL_CFG:
+        addressOffset: 0x00
+      HALL_INFO:
+        addressOffset: 0x04
+      HALL_WIDTH:
+        addressOffset: 0x08
+      HALL_TH:
+        addressOffset: 0x0C
+      HALL_CNT:
+        addressOffset: 0x10
+
+  ADC:
+    description: Analog to Digital Converter
+    baseAddress: 0x40010400
+    interrupts:
+      ADC_IRQn:
+        description: ADC Interrupt
+        value: 10
+    registers:
+      ADC_DAT[%s]:
+        dim: 10
+        dimIncrement: 4
+        addressOffset: 0x00
+        size: 16
+        description: ADC Data Registers
+      ADC_LTH:
+        addressOffset: 0x30
+      ADC_HTH:
+        addressOffset: 0x34
+      ADC_GEN:
+        addressOffset: 0x38
+      ADC_CHN0:
+        addressOffset: 0x40
+      ADC_CHN1:
+        addressOffset: 0x44
+      ADC_CHN2:
+        addressOffset: 0x48
+      ADC_CHNT:
+        addressOffset: 0x50
+      ADC_CFG:
+        addressOffset: 0x54
+      ADC_SWT:
+        addressOffset: 0x58
+      ADC_DC:
+        addressOffset: 0x60
+      ADC_AMC:
+        addressOffset: 0x64
+      ADC_IE:
+        addressOffset: 0x68
+      ADC_IF:
+        addressOffset: 0x6C
+
+  TIMER0:
+    description: Timer 0
+    baseAddress: 0x40010500
+    interrupts:
+      TIMER0_IRQn:
+        description: Timer 0 Interrupt
+        value: 0
+    registers:
+      UTIMER_CFG:
+        addressOffset: 0x00
+      UTIMER_TH:
+        addressOffset: 0x04
+      UTIMER_CNT:
+        addressOffset: 0x08
+      UTIMER_CMP0:
+        addressOffset: 0x0C
+      UTIMER_CMP1:
+        addressOffset: 0x10
+      UTIMER_EVT:
+        addressOffset: 0x14
+      UTIMER_FLT:
+        addressOffset: 0x18
+      UTIMER_IE:
+        addressOffset: 0x1C
+      UTIMER_IF:
+        addressOffset: 0x20
+
+  TIMER1:
+    description: Timer 1
+    baseAddress: 0x40010600
+    derivedFrom: TIMER0
+    interrupts:
+      TIMER1_IRQn:
+        description: Timer 1 Interrupt
+        value: 1
+
+  MCPWM:
+    description: Motor Control PWM
+    baseAddress: 0x40010700
+    interrupts:
+      MCPWM0_IRQn:
+        description: MCPWM Interrupt 0
+        value: 2
+      MCPWM1_IRQn:
+        description: MCPWM Interrupt 1
+        value: 3
+    registers:
+      MCPWM_TH00:
+        addressOffset: 0x00
+        size: 16
+      MCPWM_TH01:
+        addressOffset: 0x04
+        size: 16
+      MCPWM_TH10:
+        addressOffset: 0x08
+        size: 16
+      MCPWM_TH11:
+        addressOffset: 0x0C
+        size: 16
+      MCPWM_TH20:
+        addressOffset: 0x10
+        size: 16
+      MCPWM_TH21:
+        addressOffset: 0x14
+        size: 16
+      MCPWM_TH30:
+        addressOffset: 0x18
+        size: 16
+      MCPWM_TH31:
+        addressOffset: 0x1C
+        size: 16
+      
+      MCPWM_TMR[%s]:
+        dim: 4
+        dimIncrement: 4
+        addressOffset: 0x20
+        description: MCPWM Timer
+        size: 16
+      
+      MCPWM_TH0:
+        addressOffset: 0x30
+      MCPWM_TH1:
+        addressOffset: 0x34
+      MCPWM_CNT0:
+        addressOffset: 0x38
+      MCPWM_CNT1:
+        addressOffset: 0x3C
+      MCPWM_UPDATE:
+        addressOffset: 0x40
+      MCPWM_FCNT:
+        addressOffset: 0x44
+      MCPWM_EVT0:
+        addressOffset: 0x48
+      MCPWM_EVT1:
+        addressOffset: 0x4C
+      MCPWM_DTH0:
+        addressOffset: 0x50
+      MCPWM_DTH1:
+        addressOffset: 0x54
+      MCPWM_FLT:
+        addressOffset: 0x70
+      MCPWM_SDCFG:
+        addressOffset: 0x74
+      MCPWM_AUEN:
+        addressOffset: 0x78
+      MCPWM_TCLK:
+        addressOffset: 0x7C
+      MCPWM_IE0:
+        addressOffset: 0x80
+      MCPWM_IF0:
+        addressOffset: 0x84
+      MCPWM_IE1:
+        addressOffset: 0x88
+      MCPWM_IF1:
+        addressOffset: 0x8C
+      MCPWM_EIE:
+        addressOffset: 0x90
+      MCPWM_EIF:
+        addressOffset: 0x94
+      MCPWM_RE:
+        addressOffset: 0x98
+      MCPWM_PP:
+        addressOffset: 0x9C
+      MCPWM_IO01:
+        addressOffset: 0xA0
+      MCPWM_IO23:
+        addressOffset: 0xA4
+      MCPWM_FAIL012:
+        addressOffset: 0xA8
+      MCPWM_FAIL3:
+        addressOffset: 0xAC
+      MCPWM_PRT:
+        addressOffset: 0xB0
+      MCPWM_SWAP:
+        addressOffset: 0xB4
+      MCPWM_CH_MASK:
+        addressOffset: 0xB8
+
+  GPIO0:
+    description: General Purpose I/O Port 0
+    baseAddress: 0x40010800
+    interrupts:
+      GPIO_IRQn:
+        description: GPIO Interrupt
+        value: 6
+    registers:
+      GPIO_PIE:
+        addressOffset: 0x00
+      GPIO_POE:
+        addressOffset: 0x04
+      GPIO_PDI:
+        addressOffset: 0x08
+      GPIO_PDO:
+        addressOffset: 0x0C
+      GPIO_PUE:
+        addressOffset: 0x10
+      GPIO_PODE:
+        addressOffset: 0x18
+      GPIO_PFLT:
+        addressOffset: 0x1C
+      GPIO_F3210:
+        addressOffset: 0x20
+      GPIO_F7654:
+        addressOffset: 0x24
+      GPIO_FBA98:
+        addressOffset: 0x28
+      GPIO_FFEDC:
+        addressOffset: 0x2C
+      GPIO_BSRR:
+        addressOffset: 0x30
+      GPIO_BRR:
+        addressOffset: 0x34
+
+  GPIO1:
+    description: General Purpose I/O Port 1
+    baseAddress: 0x40010840
+    derivedFrom: GPIO0
+
+  EXTI:
+    description: External Interrupt Controller
+    baseAddress: 0x40010880
+    registers:
+      EXTI_CR0:
+        addressOffset: 0x00
+      EXTI_CR1:
+        addressOffset: 0x04
+      EXTI_IE:
+        addressOffset: 0x08
+      EXTI_IF:
+        addressOffset: 0x0C
+      CLKO_SEL:
+        addressOffset: 0x10
+
+  UART0:
+    description: UART 0
+    baseAddress: 0x40010900
+    interrupts:
+      UART_IRQn:
+        description: UART Interrupt
+        value: 8
+    registers:
+      UART_CTRL:
+        addressOffset: 0x00
+      UART_DIVH:
+        addressOffset: 0x04
+      UART_DIVL:
+        addressOffset: 0x08
+      UART_BUFF:
+        addressOffset: 0x0C
+      UART_ADR:
+        addressOffset: 0x10
+      UART_STT:
+        addressOffset: 0x14
+      UART_RE:
+        addressOffset: 0x18
+      UART_IE:
+        addressOffset: 0x1C
+      UART_IF:
+        addressOffset: 0x20
+      UART_IOC:
+        addressOffset: 0x24
+
+  DMA:
+    description: Direct Memory Access
+    baseAddress: 0x40010A00
+    interrupts:
+      DMA_IRQn:
+        description: DMA Interrupt
+        value: 11
+    registers:
+      # Flattened DMA Channel Registers
+      DMA_CCR[%s]:
+        dim: 4
+        dimIncrement: 0x20
+        addressOffset: 0x00
+      DMA_REN[%s]:
+        dim: 4
+        dimIncrement: 0x20
+        addressOffset: 0x04
+      DMA_CTMS[%s]:
+        dim: 4
+        dimIncrement: 0x20
+        addressOffset: 0x08
+      DMA_SADR[%s]:
+        dim: 4
+        dimIncrement: 0x20
+        addressOffset: 0x0C
+      DMA_DADR[%s]:
+        dim: 4
+        dimIncrement: 0x20
+        addressOffset: 0x10
+      
+      DMA_CTRL:
+        addressOffset: 0x80
+      DMA_IE:
+        addressOffset: 0x84
+      DMA_IF:
+        addressOffset: 0x88
+
+  DSP:
+    description: DSP Coprocessor
+    baseAddress: 0x40010B00
+    registers:
+      DSP_DID:
+        addressOffset: 0x20
+      DSP_DIS:
+        addressOffset: 0x24
+      DSP_QUO:
+        addressOffset: 0x28
+      DSP_REM:
+        addressOffset: 0x2C
+      DSP_RAD:
+        addressOffset: 0x30
+      DSP_SQRT:
+        addressOffset: 0x34
+
+  AON:
+    description: Always On Domain
+    baseAddress: 0x40010C00
+    interrupts:
+      WAKE_IRQn:
+        description: Wake Interrupt
+        value: 12
+    registers:
+      IWDG_PSW:
+        addressOffset: 0x00
+      IWDG_CFG:
+        addressOffset: 0x04
+      IWDG_CLR:
+        addressOffset: 0x08
+      IWDG_WTH:
+        addressOffset: 0x0C
+      IWDG_RTH:
+        addressOffset: 0x10
+      IWDG_CNT:
+        addressOffset: 0x14
+      AON_PWR_CFG:
+        addressOffset: 0x20
+      AON_EVT_RCD:
+        addressOffset: 0x24
+      AON_IO_WAKE_POL:
+        addressOffset: 0x28
+      AON_IO_WAKE_EN:
+        addressOffset: 0x2C

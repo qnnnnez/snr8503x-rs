@@ -1,0 +1,225 @@
+<device xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.3" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
+  <vendor>MyVendor</vendor>             <vendorID>MYVENDOR</vendorID>
+  <name>MyM0Chip</name>                 <series>M0Series</series>
+  <version>1.0</version>
+  <description>ARM Cortex-M0 Device</description>
+
+  <cpu>
+    <name>CM0</name>
+    <revision>r0p0</revision>
+    <endian>little</endian>
+    <mpuPresent>false</mpuPresent>
+    <fpuPresent>false</fpuPresent>
+    <nvicPrioBits>2</nvicPrioBits>      <vendorSystickConfig>false</vendorSystickConfig>
+  </cpu>
+
+  <addressUnitBits>8</addressUnitBits>
+  <width>32</width>
+  <size>32</size>
+  <resetValue>0x00000000</resetValue>
+  <resetMask>0xFFFFFFFF</resetMask>
+
+  <peripherals>
+  <peripheral><name>MISC</name><description>Miscellaneous System Control</description><baseAddress>1073741824</baseAddress><registers><register><name>SYS_AFE_ADC</name><addressOffset>0</addressOffset></register>
+        <register><name>SYS_AFE_INFO</name><addressOffset>4</addressOffset><access>read-only</access></register>
+        <register><name>SYS_AFE_DBG</name><addressOffset>8</addressOffset></register>
+        <register><name>SYS_OPA_SEL</name><addressOffset>12</addressOffset></register>
+        <register><name>SYS_AFE_REG0</name><addressOffset>16</addressOffset></register>
+        <register><name>SYS_AFE_REG1</name><addressOffset>20</addressOffset></register>
+        <register><name>SYS_AFE_REG2</name><addressOffset>24</addressOffset></register>
+        <register><name>SYS_AFE_REG3</name><addressOffset>28</addressOffset></register>
+        <register><name>SYS_AFE_REG4</name><addressOffset>32</addressOffset></register>
+        <register><name>SYS_AFE_REG5</name><addressOffset>36</addressOffset></register>
+        <register><name>SYS_AFE_REG6</name><addressOffset>40</addressOffset></register>
+        <register><name>SYS_AFE_DAC</name><addressOffset>44</addressOffset></register>
+        <register><name>SYS_CLK_CFG</name><addressOffset>128</addressOffset></register>
+        <register><name>SYS_IO_CFG</name><addressOffset>132</addressOffset></register>
+        <register><name>SYS_DBG_CFG</name><addressOffset>136</addressOffset></register>
+        <register><name>SYS_CLK_DIV0</name><description>SPI clock div</description><addressOffset>144</addressOffset></register>
+        <register><name>SYS_CLK_DIV1</name><description>I2C clock div</description><addressOffset>148</addressOffset></register>
+        <register><name>SYS_CLK_DIV2</name><description>UART0/1 clock div</description><addressOffset>152</addressOffset></register>
+        <register><name>SYS_CLK_FEN</name><description>peripheral clock enable</description><addressOffset>156</addressOffset></register>
+        <register><name>SYS_TRIM</name><addressOffset>160</addressOffset></register>
+        <register><name>SYS_SFT_RST</name><addressOffset>164</addressOffset></register>
+        <register><name>SYS_WR_PROTECT</name><description>Write Protect (Aliases SYS_PROTECT, SYS_PROT)</description><addressOffset>168</addressOffset></register>
+        <register><name>SYS_MBIST</name><addressOffset>192</addressOffset></register>
+        <register><name>SYS_FLSE</name><addressOffset>208</addressOffset></register>
+        <register><name>SYS_FLSP</name><addressOffset>212</addressOffset></register>
+        <register><name>SYS_FLST</name><addressOffset>216</addressOffset></register>
+        <register><name>SYS_TEST</name><addressOffset>252</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>FLASH_CTRL</name><description>Flash Control</description><baseAddress>65536</baseAddress><registers><register><name>FLASH_CFG</name><addressOffset>0</addressOffset></register>
+        <register><name>FLASH_ADDR</name><addressOffset>4</addressOffset></register>
+        <register><name>FLASH_WDATA</name><addressOffset>8</addressOffset></register>
+        <register><name>FLASH_RDATA</name><addressOffset>12</addressOffset></register>
+        <register><name>FLASH_ERASE</name><addressOffset>16</addressOffset></register>
+        <register><name>FLASH_PROTECT</name><addressOffset>20</addressOffset></register>
+        <register><name>FLASH_READY</name><addressOffset>24</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>SPI</name><description>Serial Peripheral Interface</description><baseAddress>1073807360</baseAddress><interrupt><name>SPI_IRQn</name><description>SPI Interrupt</description><value>5</value></interrupt>
+    <registers><register><name>SPI_CFG</name><addressOffset>0</addressOffset></register>
+        <register><name>SPI_IE</name><addressOffset>4</addressOffset></register>
+        <register><name>SPI_DIV</name><addressOffset>8</addressOffset></register>
+        <register><name>SPI_TX_DATA</name><addressOffset>12</addressOffset></register>
+        <register><name>SPI_RX_DATA</name><addressOffset>16</addressOffset></register>
+        <register><name>SPI_SIZE</name><addressOffset>20</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>I2C</name><description>I2C Interface</description><baseAddress>1073807616</baseAddress><interrupt><name>I2C_IRQn</name><description>I2C Interrupt</description><value>4</value></interrupt>
+    <registers><register><name>I2C_ADDR</name><addressOffset>0</addressOffset></register>
+        <register><name>I2C_CFG</name><addressOffset>4</addressOffset></register>
+        <register><name>I2C_SCR</name><addressOffset>8</addressOffset></register>
+        <register><name>I2C_DATA</name><addressOffset>12</addressOffset></register>
+        <register><name>I2C_MSCR</name><addressOffset>16</addressOffset></register>
+        <register><name>I2C_BCR</name><addressOffset>20</addressOffset></register>
+        <register><name>I2C_BSIZE</name><addressOffset>24</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>CMP</name><description>Comparator</description><baseAddress>1073807872</baseAddress><interrupt><name>CMP_IRQn</name><description>Comparator Interrupt</description><value>9</value></interrupt>
+    <registers><register><name>CMP_IE</name><addressOffset>0</addressOffset></register>
+        <register><name>CMP_IF</name><addressOffset>4</addressOffset></register>
+        <register><name>CMP_TCLK</name><addressOffset>8</addressOffset></register>
+        <register><name>CMP_CFG</name><addressOffset>12</addressOffset></register>
+        <register><name>CMP_BLCWIN</name><addressOffset>16</addressOffset></register>
+        <register><name>CMP_DATA</name><addressOffset>20</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>HALL</name><description>Hall Sensor Interface</description><baseAddress>1073808128</baseAddress><interrupt><name>HALL_IRQn</name><description>Hall Sensor Interrupt</description><value>7</value></interrupt>
+    <registers><register><name>HALL_CFG</name><addressOffset>0</addressOffset></register>
+        <register><name>HALL_INFO</name><addressOffset>4</addressOffset></register>
+        <register><name>HALL_WIDTH</name><addressOffset>8</addressOffset></register>
+        <register><name>HALL_TH</name><addressOffset>12</addressOffset></register>
+        <register><name>HALL_CNT</name><addressOffset>16</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>ADC</name><description>Analog to Digital Converter</description><baseAddress>1073808384</baseAddress><interrupt><name>ADC_IRQn</name><description>ADC Interrupt</description><value>10</value></interrupt>
+    <registers><register><dim>10</dim><dimIncrement>4</dimIncrement><name>ADC_DAT[%s]</name><description>ADC Data Registers</description><addressOffset>0</addressOffset><size>16</size></register>
+        <register><name>ADC_LTH</name><addressOffset>48</addressOffset></register>
+        <register><name>ADC_HTH</name><addressOffset>52</addressOffset></register>
+        <register><name>ADC_GEN</name><addressOffset>56</addressOffset></register>
+        <register><name>ADC_CHN0</name><addressOffset>64</addressOffset></register>
+        <register><name>ADC_CHN1</name><addressOffset>68</addressOffset></register>
+        <register><name>ADC_CHN2</name><addressOffset>72</addressOffset></register>
+        <register><name>ADC_CHNT</name><addressOffset>80</addressOffset></register>
+        <register><name>ADC_CFG</name><addressOffset>84</addressOffset></register>
+        <register><name>ADC_SWT</name><addressOffset>88</addressOffset></register>
+        <register><name>ADC_DC</name><addressOffset>96</addressOffset></register>
+        <register><name>ADC_AMC</name><addressOffset>100</addressOffset></register>
+        <register><name>ADC_IE</name><addressOffset>104</addressOffset></register>
+        <register><name>ADC_IF</name><addressOffset>108</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>TIMER0</name><description>Timer 0</description><baseAddress>1073808640</baseAddress><interrupt><name>TIMER0_IRQn</name><description>Timer 0 Interrupt</description><value>0</value></interrupt>
+    <registers><register><name>UTIMER_CFG</name><addressOffset>0</addressOffset></register>
+        <register><name>UTIMER_TH</name><addressOffset>4</addressOffset></register>
+        <register><name>UTIMER_CNT</name><addressOffset>8</addressOffset></register>
+        <register><name>UTIMER_CMP0</name><addressOffset>12</addressOffset></register>
+        <register><name>UTIMER_CMP1</name><addressOffset>16</addressOffset></register>
+        <register><name>UTIMER_EVT</name><addressOffset>20</addressOffset></register>
+        <register><name>UTIMER_FLT</name><addressOffset>24</addressOffset></register>
+        <register><name>UTIMER_IE</name><addressOffset>28</addressOffset></register>
+        <register><name>UTIMER_IF</name><addressOffset>32</addressOffset></register>
+        </registers></peripheral>
+    <peripheral derivedFrom="TIMER0"><name>TIMER1</name><description>Timer 1</description><baseAddress>1073808896</baseAddress><interrupt><name>TIMER1_IRQn</name><description>Timer 1 Interrupt</description><value>1</value></interrupt>
+    </peripheral>
+    <peripheral><name>MCPWM</name><description>Motor Control PWM</description><baseAddress>1073809152</baseAddress><interrupt><name>MCPWM0_IRQn</name><description>MCPWM Interrupt 0</description><value>2</value></interrupt>
+    <interrupt><name>MCPWM1_IRQn</name><description>MCPWM Interrupt 1</description><value>3</value></interrupt>
+    <registers><register><name>MCPWM_TH00</name><addressOffset>0</addressOffset><size>16</size></register>
+        <register><name>MCPWM_TH01</name><addressOffset>4</addressOffset><size>16</size></register>
+        <register><name>MCPWM_TH10</name><addressOffset>8</addressOffset><size>16</size></register>
+        <register><name>MCPWM_TH11</name><addressOffset>12</addressOffset><size>16</size></register>
+        <register><name>MCPWM_TH20</name><addressOffset>16</addressOffset><size>16</size></register>
+        <register><name>MCPWM_TH21</name><addressOffset>20</addressOffset><size>16</size></register>
+        <register><name>MCPWM_TH30</name><addressOffset>24</addressOffset><size>16</size></register>
+        <register><name>MCPWM_TH31</name><addressOffset>28</addressOffset><size>16</size></register>
+        <register><dim>4</dim><dimIncrement>4</dimIncrement><name>MCPWM_TMR[%s]</name><description>MCPWM Timer</description><addressOffset>32</addressOffset><size>16</size></register>
+        <register><name>MCPWM_TH0</name><addressOffset>48</addressOffset></register>
+        <register><name>MCPWM_TH1</name><addressOffset>52</addressOffset></register>
+        <register><name>MCPWM_CNT0</name><addressOffset>56</addressOffset></register>
+        <register><name>MCPWM_CNT1</name><addressOffset>60</addressOffset></register>
+        <register><name>MCPWM_UPDATE</name><addressOffset>64</addressOffset></register>
+        <register><name>MCPWM_FCNT</name><addressOffset>68</addressOffset></register>
+        <register><name>MCPWM_EVT0</name><addressOffset>72</addressOffset></register>
+        <register><name>MCPWM_EVT1</name><addressOffset>76</addressOffset></register>
+        <register><name>MCPWM_DTH0</name><addressOffset>80</addressOffset></register>
+        <register><name>MCPWM_DTH1</name><addressOffset>84</addressOffset></register>
+        <register><name>MCPWM_FLT</name><addressOffset>112</addressOffset></register>
+        <register><name>MCPWM_SDCFG</name><addressOffset>116</addressOffset></register>
+        <register><name>MCPWM_AUEN</name><addressOffset>120</addressOffset></register>
+        <register><name>MCPWM_TCLK</name><addressOffset>124</addressOffset></register>
+        <register><name>MCPWM_IE0</name><addressOffset>128</addressOffset></register>
+        <register><name>MCPWM_IF0</name><addressOffset>132</addressOffset></register>
+        <register><name>MCPWM_IE1</name><addressOffset>136</addressOffset></register>
+        <register><name>MCPWM_IF1</name><addressOffset>140</addressOffset></register>
+        <register><name>MCPWM_EIE</name><addressOffset>144</addressOffset></register>
+        <register><name>MCPWM_EIF</name><addressOffset>148</addressOffset></register>
+        <register><name>MCPWM_RE</name><addressOffset>152</addressOffset></register>
+        <register><name>MCPWM_PP</name><addressOffset>156</addressOffset></register>
+        <register><name>MCPWM_IO01</name><addressOffset>160</addressOffset></register>
+        <register><name>MCPWM_IO23</name><addressOffset>164</addressOffset></register>
+        <register><name>MCPWM_FAIL012</name><addressOffset>168</addressOffset></register>
+        <register><name>MCPWM_FAIL3</name><addressOffset>172</addressOffset></register>
+        <register><name>MCPWM_PRT</name><addressOffset>176</addressOffset></register>
+        <register><name>MCPWM_SWAP</name><addressOffset>180</addressOffset></register>
+        <register><name>MCPWM_CH_MASK</name><addressOffset>184</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>GPIO0</name><description>General Purpose I/O Port 0</description><baseAddress>1073809408</baseAddress><interrupt><name>GPIO_IRQn</name><description>GPIO Interrupt</description><value>6</value></interrupt>
+    <registers><register><name>GPIO_PIE</name><addressOffset>0</addressOffset></register>
+        <register><name>GPIO_POE</name><addressOffset>4</addressOffset></register>
+        <register><name>GPIO_PDI</name><addressOffset>8</addressOffset></register>
+        <register><name>GPIO_PDO</name><addressOffset>12</addressOffset></register>
+        <register><name>GPIO_PUE</name><addressOffset>16</addressOffset></register>
+        <register><name>GPIO_PODE</name><addressOffset>24</addressOffset></register>
+        <register><name>GPIO_PFLT</name><addressOffset>28</addressOffset></register>
+        <register><name>GPIO_F3210</name><addressOffset>32</addressOffset></register>
+        <register><name>GPIO_F7654</name><addressOffset>36</addressOffset></register>
+        <register><name>GPIO_FBA98</name><addressOffset>40</addressOffset></register>
+        <register><name>GPIO_FFEDC</name><addressOffset>44</addressOffset></register>
+        <register><name>GPIO_BSRR</name><addressOffset>48</addressOffset></register>
+        <register><name>GPIO_BRR</name><addressOffset>52</addressOffset></register>
+        </registers></peripheral>
+    <peripheral derivedFrom="GPIO0"><name>GPIO1</name><description>General Purpose I/O Port 1</description><baseAddress>1073809472</baseAddress></peripheral>
+    <peripheral><name>EXTI</name><description>External Interrupt Controller</description><baseAddress>1073809536</baseAddress><registers><register><name>EXTI_CR0</name><addressOffset>0</addressOffset></register>
+        <register><name>EXTI_CR1</name><addressOffset>4</addressOffset></register>
+        <register><name>EXTI_IE</name><addressOffset>8</addressOffset></register>
+        <register><name>EXTI_IF</name><addressOffset>12</addressOffset></register>
+        <register><name>CLKO_SEL</name><addressOffset>16</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>UART0</name><description>UART 0</description><baseAddress>1073809664</baseAddress><interrupt><name>UART_IRQn</name><description>UART Interrupt</description><value>8</value></interrupt>
+    <registers><register><name>UART_CTRL</name><addressOffset>0</addressOffset></register>
+        <register><name>UART_DIVH</name><addressOffset>4</addressOffset></register>
+        <register><name>UART_DIVL</name><addressOffset>8</addressOffset></register>
+        <register><name>UART_BUFF</name><addressOffset>12</addressOffset></register>
+        <register><name>UART_ADR</name><addressOffset>16</addressOffset></register>
+        <register><name>UART_STT</name><addressOffset>20</addressOffset></register>
+        <register><name>UART_RE</name><addressOffset>24</addressOffset></register>
+        <register><name>UART_IE</name><addressOffset>28</addressOffset></register>
+        <register><name>UART_IF</name><addressOffset>32</addressOffset></register>
+        <register><name>UART_IOC</name><addressOffset>36</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>DMA</name><description>Direct Memory Access</description><baseAddress>1073809920</baseAddress><interrupt><name>DMA_IRQn</name><description>DMA Interrupt</description><value>11</value></interrupt>
+    <registers><register><dim>4</dim><dimIncrement>32</dimIncrement><name>DMA_CCR[%s]</name><addressOffset>0</addressOffset></register>
+        <register><dim>4</dim><dimIncrement>32</dimIncrement><name>DMA_REN[%s]</name><addressOffset>4</addressOffset></register>
+        <register><dim>4</dim><dimIncrement>32</dimIncrement><name>DMA_CTMS[%s]</name><addressOffset>8</addressOffset></register>
+        <register><dim>4</dim><dimIncrement>32</dimIncrement><name>DMA_SADR[%s]</name><addressOffset>12</addressOffset></register>
+        <register><dim>4</dim><dimIncrement>32</dimIncrement><name>DMA_DADR[%s]</name><addressOffset>16</addressOffset></register>
+        <register><name>DMA_CTRL</name><addressOffset>128</addressOffset></register>
+        <register><name>DMA_IE</name><addressOffset>132</addressOffset></register>
+        <register><name>DMA_IF</name><addressOffset>136</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>DSP</name><description>DSP Coprocessor</description><baseAddress>1073810176</baseAddress><registers><register><name>DSP_DID</name><addressOffset>32</addressOffset></register>
+        <register><name>DSP_DIS</name><addressOffset>36</addressOffset></register>
+        <register><name>DSP_QUO</name><addressOffset>40</addressOffset></register>
+        <register><name>DSP_REM</name><addressOffset>44</addressOffset></register>
+        <register><name>DSP_RAD</name><addressOffset>48</addressOffset></register>
+        <register><name>DSP_SQRT</name><addressOffset>52</addressOffset></register>
+        </registers></peripheral>
+    <peripheral><name>AON</name><description>Always On Domain</description><baseAddress>1073810432</baseAddress><interrupt><name>WAKE_IRQn</name><description>Wake Interrupt</description><value>12</value></interrupt>
+    <registers><register><name>IWDG_PSW</name><addressOffset>0</addressOffset></register>
+        <register><name>IWDG_CFG</name><addressOffset>4</addressOffset></register>
+        <register><name>IWDG_CLR</name><addressOffset>8</addressOffset></register>
+        <register><name>IWDG_WTH</name><addressOffset>12</addressOffset></register>
+        <register><name>IWDG_RTH</name><addressOffset>16</addressOffset></register>
+        <register><name>IWDG_CNT</name><addressOffset>20</addressOffset></register>
+        <register><name>AON_PWR_CFG</name><addressOffset>32</addressOffset></register>
+        <register><name>AON_EVT_RCD</name><addressOffset>36</addressOffset></register>
+        <register><name>AON_IO_WAKE_POL</name><addressOffset>40</addressOffset></register>
+        <register><name>AON_IO_WAKE_EN</name><addressOffset>44</addressOffset></register>
+        </registers></peripheral>
+    </peripherals>
+</device>

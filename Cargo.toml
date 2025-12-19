@@ -1,0 +1,21 @@
+[package]
+name = "snr8503-rs"
+version = "0.1.0"
+edition = "2024"
+
+[profile.release]
+lto = true
+opt-level = "z"
+
+[workspace]
+members = [
+    "snr8503-pac"
+]
+
+resolver = "2"
+
+[dependencies]
+cortex-m = { version = "0.7.7", features = ["critical-section-single-core"] }
+cortex-m-rt = "0.7.5"
+panic-halt = "1.0.0"
+snr8503-pac = { path = "snr8503-pac", features = ["rt", "critical-section"] }
