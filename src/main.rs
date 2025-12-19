@@ -5,6 +5,7 @@
 use panic_halt as _;
 
 mod gpio;
+mod delay;
 
 use cortex_m_rt::entry;
 use snr8503_pac as pac;
@@ -14,7 +15,8 @@ fn clock_init(peripherals: &pac::Peripherals) {
     // delay_init(96);            /* 延时函数初始化主频96MHz*/
     // In Rust we typically rely on cortex-m::delay or a timer. 
     // Since we don't have the implementation of delay_init, we skip it or assume standard usage.
-
+    // The delay_init call logic has been moved to main() using delay::Delay::new
+    
     // SYS_WR_PROTECT = 0x7a83;   /* 解除系统寄存器写保护 */
     peripherals.misc.sys_wr_protect().write(|w| unsafe { w.bits(0x7a83) });
 
@@ -25,6 +27,7 @@ fn clock_init(peripherals: &pac::Peripherals) {
     // SoftDelay(100);            /* 延时100us,等待PLL稳定*/
     // Assuming a conservative cycle count for ~100us before PLL is locked.
     // If running at internal oscillator (e.g. 8-16MHz), 10000 cycles is > 100us.
+    // We don't have the delay instance here yet, so we use asm delay.
     cortex_m::asm::delay(10000);
 
     // SYS_CLK_CFG |= 0x000001ff; /* BIT8:0: CLK_HS,1:PLL  | BIT[7:0]CLK_DIV  | 1ff对应96M时钟 */
@@ -54,12 +57,16 @@ fn multiplex_nrst(peripherals: &pac::Peripherals) {
 fn main() -> ! {
     // initialization
     let peripherals = pac::Peripherals::take().unwrap();
+    let core_peripherals = cortex_m::Peripherals::take().unwrap();
 
     system_init(&peripherals);
     multiplex_nrst(&peripherals);
 
     // Enable GPIO clock (Bit 7)
     peripherals.misc.sys_clk_fen().modify(|r, w| unsafe { w.bits(r.bits() | (1 << 7)) });
+
+    // Initialize Delay (96MHz system clock)
+    let mut delay = delay::Delay::new(core_peripherals.SYST, 48_000_000);
 
     // Configure P0.0 as Output
     let mut gpio_config = gpio::InitStruct::default();
@@ -70,9 +77,9 @@ fn main() -> ! {
     loop {
         // application logic
         gpio::set_bits(&peripherals.gpio0, 1);
-        cortex_m::asm::delay(1_000_000);
+        delay.delay_ms(1000); // 1s
 
         gpio::reset_bits(&peripherals.gpio0, 1);
-        cortex_m::asm::delay(1_000_000);
+        delay.delay_ms(1000); // 1s
     }
 }
